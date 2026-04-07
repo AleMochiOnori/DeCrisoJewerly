@@ -17,9 +17,15 @@ const translations = {
     title: "Collane - De Criso Jewelry",
     subtitle: "Scopri la nostra collezione esclusiva di collane di alta gioielleria",
     inquireNow: "Compra ora",
-    inquireAbout: "Richiedi Info su",
-    name: "Nome",
-    phone: "Telefono",
+    modalTitle: "Richiesta informazioni",
+    modalSubtitle: "Se desideri avere maggiori informazioni sul prodotto chiamaci senza impegno al numero",
+    modalSubtitle2: "oppure compila il seguente modulo. Ti risponderemo prima possibile.",
+    fullName: "Nome e Cognome",
+    phone: "Numero di Telefono",
+    messageLabel: "Messaggio",
+    privacyText: "Ho letto la",
+    privacyLink: "Privacy Policy",
+    privacyText2: "ed acconsento al trattamento dei dati personali.",
     sendInquiry: "Invia Richiesta",
     products: [
       {
@@ -36,10 +42,16 @@ const translations = {
     title: "Necklaces - De Criso Jewelry",
     subtitle: "Discover our exclusive collection of fine jewelry necklaces",
     inquireNow: "Buy Now",
-    inquireAbout: "Inquire About",
-    name: "Name",
-    phone: "Phone",
-    sendInquiry: "Send Inquiry",
+    modalTitle: "Request Information",
+    modalSubtitle: "If you would like more information about the product, feel free to call us at",
+    modalSubtitle2: "or fill out the following form. We will respond as soon as possible.",
+    fullName: "Full Name",
+    phone: "Phone Number",
+    messageLabel: "Message",
+    privacyText: "I have read the",
+    privacyLink: "Privacy Policy",
+    privacyText2: "and consent to the processing of personal data.",
+    sendInquiry: "Send Request",
     products: [
       {
         name: "Tahitian Pearl Necklace",
@@ -62,7 +74,9 @@ export default function NecklacesPage() {
     name: "",
     email: "",
     phone: "",
-    product: ""
+    message: "",
+    product: "",
+    privacy: false
   });
   const [status, setStatus] = useState<{
     type: "idle" | "loading" | "success" | "error";
@@ -99,10 +113,11 @@ export default function NecklacesPage() {
     setIsModalOpen(true);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value
     });
   };
 
@@ -116,7 +131,7 @@ export default function NecklacesPage() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...formData,
-          message: `Richiesta per prodotto: ${formData.product}`
+          message: `${formData.message}\n\nProdotto richiesto: ${formData.product}`
         }),
       });
 
@@ -131,7 +146,7 @@ export default function NecklacesPage() {
         });
         setTimeout(() => {
           setIsModalOpen(false);
-          setFormData({ name: "", email: "", phone: "", product: "" });
+          setFormData({ name: "", email: "", phone: "", message: "", product: "", privacy: false });
           setStatus({ type: "idle", message: "" });
         }, 2000);
       } else {
@@ -230,15 +245,20 @@ export default function NecklacesPage() {
             >
               ✕
             </button>
-            <h2>{t.inquireAbout} {selectedProduct}</h2>
+            <h2>{t.modalTitle}</h2>
+            <p className={styles.modalSubtitle}>
+              {t.modalSubtitle}{" "}
+              <a href="tel:+390669924965">+39 06 69924965</a>{" "}
+              {t.modalSubtitle2}
+            </p>
             {status.type !== "idle" && (
               <div className={`${styles.statusMessage} ${styles[status.type]}`}>
                 {status.message}
               </div>
             )}
             <form onSubmit={handleSubmit} className={styles.modalForm}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name">{t.name} *</label>
+              <div className={styles.formRow}>
+                <label htmlFor="name">{t.fullName}<span className={styles.required}>*</span></label>
                 <input
                   type="text"
                   id="name"
@@ -249,8 +269,8 @@ export default function NecklacesPage() {
                 />
               </div>
               
-              <div className={styles.formGroup}>
-                <label htmlFor="email">Email *</label>
+              <div className={styles.formRow}>
+                <label htmlFor="email">Email<span className={styles.required}>*</span></label>
                 <input
                   type="email"
                   id="email"
@@ -261,7 +281,7 @@ export default function NecklacesPage() {
                 />
               </div>
               
-              <div className={styles.formGroup}>
+              <div className={styles.formRow}>
                 <label htmlFor="phone">{t.phone}</label>
                 <input
                   type="tel"
@@ -271,8 +291,35 @@ export default function NecklacesPage() {
                   onChange={handleChange}
                 />
               </div>
+
+              <div className={styles.formRow}>
+                <label htmlFor="message">{t.messageLabel}<span className={styles.required}>*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className={styles.privacyGroup}>
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  checked={formData.privacy}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="privacy">
+                  {t.privacyText}{" "}
+                  <a href="/privacy">{t.privacyLink}</a>{" "}
+                  {t.privacyText2}
+                </label>
+              </div>
               
-              <button type="submit" className={styles.submitButton} disabled={status.type === "loading"}>
+              <button type="submit" className={styles.submitButton} disabled={status.type === "loading" || !formData.privacy}>
                 {status.type === "loading" 
                   ? (language === "it" ? "Invio in corso..." : "Sending...")
                   : t.sendInquiry

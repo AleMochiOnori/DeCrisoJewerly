@@ -23,9 +23,15 @@ const translations = {
     title: "Orecchini - De Criso Jewelry",
     subtitle: "Scopri la nostra collezione esclusiva di orecchini di alta gioielleria",
     inquireNow: "Compra ora",
-    inquireAbout: "Richiedi Info su",
-    name: "Nome",
-    phone: "Telefono",
+    modalTitle: "Richiesta informazioni",
+    modalSubtitle: "Se desideri avere maggiori informazioni sul prodotto chiamaci senza impegno al numero",
+    modalSubtitle2: "oppure compila il seguente modulo. Ti risponderemo prima possibile.",
+    fullName: "Nome e Cognome",
+    phone: "Numero di Telefono",
+    messageLabel: "Messaggio",
+    privacyText: "Ho letto la",
+    privacyLink: "Privacy Policy",
+    privacyText2: "ed acconsento al trattamento dei dati personali.",
     sendInquiry: "Invia Richiesta",
     products: [
       {
@@ -46,10 +52,16 @@ const translations = {
     title: "Earrings - De Criso Jewelry",
     subtitle: "Discover our exclusive collection of fine jewelry earrings",
     inquireNow: "Buy Now",
-    inquireAbout: "Inquire About",
-    name: "Name",
-    phone: "Phone",
-    sendInquiry: "Send Inquiry",
+    modalTitle: "Request Information",
+    modalSubtitle: "If you would like more information about the product, feel free to call us at",
+    modalSubtitle2: "or fill out the following form. We will respond as soon as possible.",
+    fullName: "Full Name",
+    phone: "Phone Number",
+    messageLabel: "Message",
+    privacyText: "I have read the",
+    privacyLink: "Privacy Policy",
+    privacyText2: "and consent to the processing of personal data.",
+    sendInquiry: "Send Request",
     products: [
       {
         name: "Earrings with Natural Emeralds and Marquise Diamonds",
@@ -76,7 +88,9 @@ export default function EarringsPage() {
     name: "",
     email: "",
     phone: "",
-    product: ""
+    message: "",
+    product: "",
+    privacy: false
   });
   const [status, setStatus] = useState<{
     type: "idle" | "loading" | "success" | "error";
@@ -130,7 +144,7 @@ export default function EarringsPage() {
         },
         body: JSON.stringify({
           ...formData,
-          message: `Richiesta per prodotto: ${formData.product}`
+          message: `${formData.message}\n\nProdotto richiesto: ${formData.product}`
         }),
       });
 
@@ -145,7 +159,7 @@ export default function EarringsPage() {
         });
         setTimeout(() => {
           setIsModalOpen(false);
-          setFormData({ name: "", email: "", phone: "", product: "" });
+          setFormData({ name: "", email: "", phone: "", message: "", product: "", privacy: false });
           setStatus({ type: "idle", message: "" });
         }, 2000);
       } else {
@@ -166,10 +180,11 @@ export default function EarringsPage() {
     }
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value, type } = e.target;
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [name]: type === "checkbox" ? (e.target as HTMLInputElement).checked : value
     });
   };
 
@@ -245,15 +260,20 @@ export default function EarringsPage() {
             >
               ✕
             </button>
-            <h2>{translations[language].inquireAbout} {selectedProduct}</h2>
+            <h2>{translations[language].modalTitle}</h2>
+            <p className={styles.modalSubtitle}>
+              {translations[language].modalSubtitle}{" "}
+              <a href="tel:+390669924965">+39 06 69924965</a>{" "}
+              {translations[language].modalSubtitle2}
+            </p>
             {status.type !== "idle" && (
               <div className={`${styles.statusMessage} ${styles[status.type]}`}>
                 {status.message}
               </div>
             )}
             <form onSubmit={handleSubmit} className={styles.modalForm}>
-              <div className={styles.formGroup}>
-                <label htmlFor="name">{translations[language].name} *</label>
+              <div className={styles.formRow}>
+                <label htmlFor="name">{translations[language].fullName}<span className={styles.required}>*</span></label>
                 <input
                   type="text"
                   id="name"
@@ -264,8 +284,8 @@ export default function EarringsPage() {
                 />
               </div>
               
-              <div className={styles.formGroup}>
-                <label htmlFor="email">Email *</label>
+              <div className={styles.formRow}>
+                <label htmlFor="email">Email<span className={styles.required}>*</span></label>
                 <input
                   type="email"
                   id="email"
@@ -276,7 +296,7 @@ export default function EarringsPage() {
                 />
               </div>
               
-              <div className={styles.formGroup}>
+              <div className={styles.formRow}>
                 <label htmlFor="phone">{translations[language].phone}</label>
                 <input
                   type="tel"
@@ -286,8 +306,35 @@ export default function EarringsPage() {
                   onChange={handleChange}
                 />
               </div>
+
+              <div className={styles.formRow}>
+                <label htmlFor="message">{translations[language].messageLabel}<span className={styles.required}>*</span></label>
+                <textarea
+                  id="message"
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              <div className={styles.privacyGroup}>
+                <input
+                  type="checkbox"
+                  id="privacy"
+                  name="privacy"
+                  checked={formData.privacy}
+                  onChange={handleChange}
+                  required
+                />
+                <label htmlFor="privacy">
+                  {translations[language].privacyText}{" "}
+                  <a href="/privacy">{translations[language].privacyLink}</a>{" "}
+                  {translations[language].privacyText2}
+                </label>
+              </div>
               
-              <button type="submit" className={styles.submitButton} disabled={status.type === "loading"}>
+              <button type="submit" className={styles.submitButton} disabled={status.type === "loading" || !formData.privacy}>
                 {status.type === "loading" 
                   ? (language === "it" ? "Invio in corso..." : "Sending...")
                   : translations[language].sendInquiry
