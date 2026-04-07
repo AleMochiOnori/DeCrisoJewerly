@@ -1,0 +1,125 @@
+.page {
+  font-family: var(--font-source-serif-4), Georgia, serif;
+  width: 70%;
+  margin: 0 auto;
+  position: relative;
+  min-height: 100vh;
+  padding: 2rem 0;
+}
+
+.page::before,
+.page::after {
+  content: "";
+  position: fixed;
+  width: 400px;
+  height: 400px;
+  background-image: url("../../../assets/PNG-11.png");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+  opacity: 0.3;
+  pointer-events: none;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.page::before {
+  left: -60px;
+}
+
+.page::after {
+  right: -60px;
+}
+
+.background {
+  background-color: rgb(255, 255, 255);
+}
+
+.languageToggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #2c2416;
+  color: #f5f0e8;
+  border: 1px solid #0B1F3A;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.2);
+  z-index: 1000;
+}
+
+.languageToggle:hover {
+  background: #0B1F3A;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11, 31, 58, 0.3);
+}
+
+.languageToggle:active {
+  transform: translateY(0);
+}
+
+.page h1 {
+  margin: 0 0 1rem 0;
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 3rem;
+  font-weight: 400;
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  margin-bottom: 3rem;
+  text-align: center;
+  color: #0B1F3A;
+  letter-spacing: 2px;
+}
+
+
+.text {
+  font-size: 1.25rem;
+  line-height: 1.8;
+  text-align: justify;
+  color: #0B1F3A;
+  z-index: 2;
+}
+
+.section {
+  display: flex;
+  gap: 3rem;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.textContent {
+  flex: 1;
+}
+
+.imageWrapper {
+  flex: 0 0 450px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.ringImage {
+  width: 28rem;
+  min-height: 27rem;
+  filter: drop-shadow(0 10px 30px rgba(11, 31, 58, 0.3));
+}
+
+@media (max-width: 768px) {
+  .section {
+    flex-direction: column;
+  }
+  
+  .imageWrapper {
+    flex: 0 0 200px;
+  }
+}

@@ -1,0 +1,129 @@
+.footer {
+  background: white;
+  backdrop-filter: blur(10px);
+  color: #2c2416;
+  padding: 30px 20px 15px;
+  font-family: var(--font-source-serif-4), Georgia, serif;
+}
+
+.footerContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  margin: 0 auto;
+  gap: 20px;
+}
+
+/* SEZIONI */
+.leftContent,
+.centerContent,
+.rightContent {
+  flex: 1 1 180px;
+  min-width: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+
+.leftContent {
+  align-items: center;
+}
+
+.rightContent {
+  padding-left: 10px;
+
+}
+.links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  margin-top: 1.5rem;
+}
+.links div {
+  font-size: 0.95rem;
+  color: #2c2416;
+  cursor: pointer;
+  transition: color 0.3s ease, scale 0.3s ease;
+}
+
+.link {
+  font-size: 0.9rem;
+  color: #2c2416;
+  cursor: pointer;
+  transition: color 0.3s ease, scale 0.3s ease;
+
+
+}
+
+.link:hover {
+  color: #0B1F3A;
+  scale: 1.2;
+}
+
+.centerContent h3,
+.rightContent h3 {
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  font-weight: 300;
+  color: #0B1F3A;
+  margin-bottom: 8px;
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+.centerContent p,
+.rightContent p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #0B1F3A;
+  font-weight: 200;
+}
+
+.logo {
+  width: 200px;
+  margin-top: 50px;
+  height: auto;
+  filter: drop-shadow(0 2px 4px rgba(11, 31, 58, 0.5));
+  margin-bottom: -30px;
+}
+
+/* BOTTOM */
+.footer > div:last-child {
+  text-align: center;
+  border-top: 1px solid rgba(11, 31, 58, 0.3);
+  margin-top: 15px;
+  padding-top: 8px;
+  font-size: 0.75rem;
+  color: #666;
+}
+
+
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .footerContainer {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .leftContent {
+    align-items: center;
+    border-right: none;
+  }
+
+  .centerContent,
+  .rightContent {
+    border-left: none;
+    padding-left: 0;
+  }
+
+  .centerContent h3,
+  .rightContent h3 {
+    border-bottom: 3px solid rgba(11, 31, 58, 0.6);
+    padding-bottom: 10px;
+  }
+}

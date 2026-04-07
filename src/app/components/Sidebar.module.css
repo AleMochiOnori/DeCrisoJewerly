@@ -1,0 +1,199 @@
+.hamburger {
+  position: fixed;
+  top: 1rem;
+  left: 1rem;
+  z-index: 1001;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(11, 31, 58, 0.3);
+  border-radius: 6px;
+  padding: 0.6rem;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.hamburger:hover {
+  background: rgba(11, 31, 58, 0.2);
+  border-color: rgba(11, 31, 58, 0.5);
+}
+
+.bar {
+  width: 24px;
+  height: 3px;
+  background: #0B1F3A;
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+.nav {
+  font-family: var(--font-source-serif-4), Georgia, serif;
+  position: fixed;
+  left: -280px;
+  top: 0;
+  height: 100vh;
+  width: 240px;
+  background: rgba(11, 31, 58, 0.95);
+  border-right: 1px solid rgba(11, 31, 58, 0.3);
+  padding: 4rem 1rem 1rem;
+  transition: left 0.3s ease;
+  z-index: 1000;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+}
+
+/* Stili specifici per pagina About */
+.navAbout {
+  background: rgba(255, 255, 255, 0.95);
+  border-right: 1px solid rgba(11, 31, 58, 0.3);
+}
+
+.navAbout .list a {
+  color: #2c2416;
+}
+
+.navAbout .list a:hover {
+  background: rgba(11, 31, 58, 0.2);
+  color: #0B1F3A;
+}
+
+/* Stili di default per altre pagine */
+.navDefault {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.navPortfolio,
+.navShop,
+.navContact {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.hamburgerAbout {
+  background: rgba(245, 240, 232, 0.3);
+  border: 1px solid rgba(11, 31, 58, 0.5);
+}
+
+.hamburgerAbout:hover {
+  background: rgba(11, 31, 58, 0.3);
+  border-color: rgba(11, 31, 58, 0.7);
+}
+
+.hamburgerAbout .bar {
+  background: #0B1F3A;
+}
+
+.nav.open {
+  left: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 5rem;
+}
+
+.list a {
+  color: #0B1F3A;
+  text-decoration: none;
+  padding: 0.6rem 0.8rem;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.list a:hover {
+  background: rgba(90, 90, 90, 0.2);
+  color: #000000;
+}
+
+/* Shop dropdown menu styles */
+.shopMenuItem {
+  position: relative;
+}
+
+.shopToggle {
+  color: #0B1F3A;
+  padding: 0.6rem 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.shopToggle:hover {
+  background: rgba(90, 90, 90, 0.2);
+  color: #000000;
+}
+
+.arrow {
+  font-size: 0.7rem;
+  transition: transform 0.3s ease;
+  display: inline-block;
+}
+
+.arrowOpen {
+  transform: rotate(180deg);
+}
+
+.subMenu {
+  list-style: none;
+  padding: 0;
+  margin: 0.3rem 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  padding-left: 1rem;
+}
+
+.subMenu li a {
+  color: #0B1F3A;
+  text-decoration: none;
+  padding: 0.5rem 0.8rem;
+  display: block;
+  border-radius: 6px;
+  transition: all 0.2s;
+  font-size: 0.95rem;
+}
+
+.subMenu li a:hover {
+  background: rgba(90, 90, 90, 0.2);
+  color: #000000;
+  padding-left: 1rem;
+}
+
+/* For About page */
+.navAbout .shopToggle {
+  color: #2c2416;
+}
+
+.navAbout .shopToggle:hover {
+  background: rgba(11, 31, 58, 0.2);
+  color: #0B1F3A;
+}
+
+.navAbout .subMenu li a {
+  color: #2c2416;
+}
+
+.navAbout .subMenu li a:hover {
+  background: rgba(11, 31, 58, 0.2);
+  color: #0B1F3A;
+}

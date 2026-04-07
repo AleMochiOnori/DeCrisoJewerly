@@ -1,0 +1,47 @@
+.page {
+  font-family: var(--font-source-serif-4), Georgia, serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: white;
+}
+
+.languageToggle {
+  position: fixed;
+  top: 2rem;
+  right: 2rem;
+  background: #2c2416;
+  color: #f5f0e8;
+  border: 1px solid #0B1F3A;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.2);
+  z-index: 1000;
+}
+
+.languageToggle:hover {
+  background: #0B1F3A;
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(11, 31, 58, 0.3);
+}
+
+.languageToggle:active {
+  transform: translateY(0);
+}
+
+.title {
+  font-size: 2.5rem;
+  font-weight: 400;
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  margin: 0;
+  color: #0B1F3A;
+}
