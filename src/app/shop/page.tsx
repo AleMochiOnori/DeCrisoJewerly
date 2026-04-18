@@ -63,6 +63,8 @@ const translations = {
     privacyLink: "Privacy Policy",
     privacyText2: "ed acconsento al trattamento dei dati personali.",
     sendInquiry: "Invia Richiesta",
+    moreComingSoon: "Altri prodotti in arrivo",
+    moreDescription: "La nostra collezione si arricchisce continuamente. Torna presto per scoprire nuovi pezzi unici di alta gioielleria.",
     products: [
       {
         name: "Anello Smeraldo Trapezoidale Verde",
@@ -116,6 +118,8 @@ const translations = {
     privacyLink: "Privacy Policy",
     privacyText2: "and consent to the processing of personal data.",
     sendInquiry: "Send Request",
+    moreComingSoon: "More products coming soon",
+    moreDescription: "Our collection is constantly growing. Check back soon to discover new unique pieces of haute joaillerie.",
     products: [
       {
         name: "Green Emerald Trapezoid Ring",
@@ -332,6 +336,11 @@ export default function ShopPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className={styles.comingSoonSection}>
+          <h3>{translations[language].moreComingSoon}</h3>
+          <p>{translations[language].moreDescription}</p>
         </div>
       </div>
 

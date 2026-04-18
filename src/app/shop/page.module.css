@@ -423,6 +423,7 @@
   align-self: center;
   margin-top: 10px;
   letter-spacing: 0.5px;
+  border-radius: 20px;
 }
 
 .submitButton:hover {
@@ -594,5 +595,48 @@
 
 .contactLink:active {
   transform: translateY(0);
+}
+
+/* More Products Coming Soon Section */
+.comingSoonSection {
+  margin-top: 4rem;
+  padding: 3rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #f9f9f9 0%, #f0f0f0 100%);
+  border-radius: 15px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+}
+
+.comingSoonSection h3 {
+  font-family: var(--font-libre-baskerville), Georgia, serif;
+  font-size: 1.8rem;
+  color: #0B1F3A;
+  margin-bottom: 1rem;
+  font-weight: 400;
+  letter-spacing: 1px;
+}
+
+.comingSoonSection p {
+  font-size: 1.1rem;
+  color: #0B1F3A;
+  line-height: 1.7;
+  max-width: 700px;
+  margin: 0 auto;
+  opacity: 0.85;
+}
+
+@media (max-width: 768px) {
+  .comingSoonSection {
+    margin-top: 3rem;
+    padding: 2rem 1.5rem;
+  }
+
+  .comingSoonSection h3 {
+    font-size: 1.4rem;
+  }
+
+  .comingSoonSection p {
+    font-size: 1rem;
+  }
 }
 

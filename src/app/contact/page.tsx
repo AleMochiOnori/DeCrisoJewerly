@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 const translations = {
@@ -11,7 +12,9 @@ const translations = {
     name: "Nome",
     message: "Messaggio",
     placeholder: "Raccontaci della tua richiesta...",
-    sendMessage: "Invia Messaggio"
+    sendMessage: "Invia Messaggio",
+    privacyLabel: "Ho letto e accetto la",
+    privacyLink: "Privacy Policy"
   },
   en: {
     title: "Contact Us",
@@ -21,7 +24,9 @@ const translations = {
     name: "Name",
     message: "Message",
     placeholder: "Tell us about your inquiry...",
-    sendMessage: "Send Message"
+    sendMessage: "Send Message",
+    privacyLabel: "I have read and accept the",
+    privacyLink: "Privacy Policy"
   }
 };
 
@@ -33,6 +38,7 @@ export default function ContactPage() {
     phone: "",
     message: ""
   });
+  const [privacyAccepted, setPrivacyAccepted] = useState(false);
   const [status, setStatus] = useState<{
     type: "idle" | "loading" | "success" | "error";
     message: string;
@@ -172,7 +178,23 @@ export default function ContactPage() {
             />
           </div>
           
-          <button type="submit" className={styles.submitButton} disabled={status.type === "loading"}>
+          <div className={styles.privacyCheckbox}>
+            <input
+              type="checkbox"
+              id="privacy"
+              checked={privacyAccepted}
+              onChange={(e) => setPrivacyAccepted(e.target.checked)}
+              required
+            />
+            <label htmlFor="privacy">
+              {translations[language].privacyLabel}{" "}
+              <Link href="/privacy" target="_blank" className={styles.privacyLink}>
+                {translations[language].privacyLink}
+              </Link>
+            </label>
+          </div>
+
+          <button type="submit" className={styles.submitButton} disabled={status.type === "loading" || !privacyAccepted}>
             {status.type === "loading" 
               ? (language === "it" ? "Invio in corso..." : "Sending...")
               : translations[language].sendMessage

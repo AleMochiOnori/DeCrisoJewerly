@@ -18,6 +18,20 @@ import earrings3b from "../../../../assets/Orecchini Flower 3  - a Fiore zaffiri
 import earrings3c from "../../../../assets/Orecchini Flower 3  - a Fiore zaffiri e diamanti/c.png";
 import earrings3d from "../../../../assets/Orecchini Flower 3  - a Fiore zaffiri e diamanti/d.png";
 
+// Orecchini Flower 2 - a Fiore con diamanti
+import earrings4a from "../../../../assets/Orecchini Flower 2 - a Fiore con diamanti/a.png";
+import earrings4b from "../../../../assets/Orecchini Flower 2 - a Fiore con diamanti/b.png";
+import earrings4c from "../../../../assets/Orecchini Flower 2 - a Fiore con diamanti/c.png";
+
+// A) Orecchini Flower 1 - a Fiore zaffiri Royal blue e diamanti
+import earrings5a from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/a.png";
+import earrings5b from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/b.png";
+import earrings5c from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/c.png";
+
+// 2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K
+import earrings6a from "../../../../assets/2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K - Blue/d.png";
+import earrings6b from "../../../../assets/2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K - Blue/e.png";
+
 const translations = {
   it: {
     title: "Orecchini - De Criso Jewelry",
@@ -33,6 +47,8 @@ const translations = {
     privacyLink: "Privacy Policy",
     privacyText2: "ed acconsento al trattamento dei dati personali.",
     sendInquiry: "Invia Richiesta",
+    moreComingSoon: "Altri prodotti in arrivo",
+    moreDescription: "La nostra collezione si arricchisce continuamente.<br/>Torna presto per scoprire nuovi pezzi unici di alta gioielleria.",
     products: [
       {
         name: "Orecchini con Smeraldi e Diamanti Marquise",
@@ -45,7 +61,15 @@ const translations = {
       {
         name: "Orecchini a Fiore con Zaffiri Ceylon e Diamanti",
         description: "Orecchini a motivo floreale con zaffiri naturali origine Ceylon (Sri Lanka), taglio ovale, dal fantastico colore blu chiaro, per un totale di circa 2,40 Ct. Gli zaffiri sono arricchiti da diamanti taglio brillante di contorno per circa 0,60 Ct. in totali, colore G e purezza VS. Gli orecchini sono montati in oro bianco 14K, ed offrono un design molto raffinato e luminoso."
-      }
+      },
+      {
+        name: "Orecchini a Fiore con Diamanti",
+        description: "Orecchini a motivo floreale con diamante centrale taglio Brillante di circa 0,70 Ct. ciascuno (tot. 1,40 Ct.), colore F e purezza VS, certificati GIA. Vi sono inoltre 8 diamanti taglio brillante di contorno per circa 1,20 Ct. totali, colore G e purezza VS. Gli orecchini sono realizzati con montatura in Platino, con un design classico ed elegante."
+      },
+      {
+        name: "Orecchini a Fiore con Zaffiri Royal Blue e Diamanti",
+        description: "Orecchini Made in Italy a motivo floreale con zaffiri naturali origine Ceylon, taglio ovale, colore deep blue (Royal Blue), per un totale di circa 3,20 ct. contornati da diamanti taglio brillante per circa 0,80 ct totali, purezza VS e colore G. Le pietre sono montate in oro bianco 18K."
+      },
     ]
   },
   en: {
@@ -62,6 +86,8 @@ const translations = {
     privacyLink: "Privacy Policy",
     privacyText2: "and consent to the processing of personal data.",
     sendInquiry: "Send Request",
+    moreComingSoon: "More products coming soon",
+    moreDescription: "Our collection is constantly growing.<br/>Check back soon to discover new unique pieces of haute joaillerie.",
     products: [
       {
         name: "Earrings with Natural Emeralds and Marquise Diamonds",
@@ -72,9 +98,17 @@ const translations = {
         description: "GIA Certified Drop earrings featuring graduated heart shaped diamonds with round brilliant connectors, totaling approx. 4.80 ct (main hearts 1.20 ct each), VS clarity and F/G color. Set in 18K white gold, with refined proportions and a harmonious size progression."
       },
       {
-        name: "Floral Earrings with Ceylon Sapphires and Diamonds",
+        name: "Floral style Earrings with Ceylon Sapphires and Diamonds",
         description: "Floral motif earrings featuring natural Ceylon (Sri Lanka) sapphires, oval cut, with a beautiful light blue color, totaling approx. 2.40 Ct. The sapphires are accented by Round brilliant cut diamonds totaling approx. 0.60 Ct, G color and VS clarity. The earrings are set in solid 14K white gold, with a refined, elegant and luminous design."
-      }
+      },
+      {
+        name: "Diamonds Floral Earrings",
+        description: "GIA Certified Floral motif earrings featuring a central Round brilliant cut diamond of approx. 0.70 Ct. each (for a total weight of 1.40 C.t), F color and VS clarity. The main stones are surrounded by 8 Round brilliant cut diamonds totaling approx. 1.20 Ct, G color and VS clarity and set in Solid Platinum, with a timeless and elegant design."
+      },
+      {
+        name: "Royal Blue Sapphire and Diamonds Floral Earrings",
+        description: "Floral motif earrings featuring natural Ceylon sapphires, oval cut, deep blue (Royal Blue) color, totaling approx. 3.20 ct. surrounded by brilliant cut diamonds totaling approx. 0.80 ct, VS clarity and G color. The gems are set in 18K white gold. This piece was made in Italy."
+      },
     ]
   }
 };
@@ -105,6 +139,8 @@ export default function EarringsPage() {
     { id: 4, images: [earrings1a.src, earrings1b.src, earrings1c.src, earrings1d.src] },
     { id: 5, images: [earrings2a.src, earrings2b.src, earrings2c.src] },
     { id: 6, images: [earrings3b.src, earrings3c.src, earrings3d.src] },
+    { id: 10, images: [earrings4a.src, earrings4b.src, earrings4c.src] },
+    { id: 11, images: [earrings5a.src, earrings5b.src, earrings5c.src, earrings6a.src, earrings6b.src ]}
   ];
 
   const nextImage = (productId: number, totalImages: number) => {
@@ -248,6 +284,11 @@ export default function EarringsPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className={styles.comingSoonSection}>
+          <h3>{translations[language].moreComingSoon}</h3>
+          <p dangerouslySetInnerHTML={{ __html: translations[language].moreDescription }} />
         </div>
       </div>
 

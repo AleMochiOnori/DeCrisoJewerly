@@ -81,17 +81,29 @@
   color: #0B1F3A;
   font-weight: 200;
 }
+.svg{
+  width: 32px;
+  height: 32px;
+}
 
 .logo {
   width: 200px;
-  margin-top: 50px;
+  margin-top: 1.5rem;
   height: auto;
   filter: drop-shadow(0 2px 4px rgba(11, 31, 58, 0.5));
-  margin-bottom: -30px;
 }
 
 /* BOTTOM */
 .footer > div:last-child {
+  font-size: 0.75rem;
+  color: #666;
+}
+
+.bottomRow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
   text-align: center;
   border-top: 1px solid rgba(11, 31, 58, 0.3);
   margin-top: 15px;
@@ -100,7 +112,17 @@
   color: #666;
 }
 
+.privacyLink {
+  color: #0B1F3A;
+  text-decoration: none;
+  font-size: 0.75rem;
+  transition: color 0.3s ease;
+}
 
+.privacyLink:hover {
+  color: #2c2416;
+  text-decoration: underline;
+}
 
 /* RESPONSIVE */
 @media (max-width: 768px) {

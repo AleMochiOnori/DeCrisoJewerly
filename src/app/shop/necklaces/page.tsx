@@ -27,14 +27,16 @@ const translations = {
     privacyLink: "Privacy Policy",
     privacyText2: "ed acconsento al trattamento dei dati personali.",
     sendInquiry: "Invia Richiesta",
+    moreComingSoon: "Altri prodotti in arrivo",
+    moreDescription: "La nostra collezione si arricchisce continuamente.<br/>Torna presto per scoprire nuovi pezzi unici di alta gioielleria.",
     products: [
       {
         name: "Collana con Perle di Tahiti",
         description: "Elegante collana di perle di Tahiti dai riflessi grigio antracite, caratterizzata da una lucentezza intensa e sofisticata. Design classico e armonioso perfetto per ogni occasione. Realizzata con 45 perle Tahiti di diametro di circa 8/10 mm. Lunghezza di circa 45 cm con chiusura in oro bianco 18K."
       },
       {
-        name: "Collana Riviera di Diamanti",
-        description: "Collana di diamanti stile Riviera, lunghezza 43,20 cm con 119 diamanti graduati taglio brillante rotondo incastonati in castoni a quattro griffe, montata in oro bianco 18K. La pietra centrale misura 2,00Ct e le due laterali 1,40Ct ciascuna. I diamanti hanno colore F/G e purezza VS-SI1. Peso totale stimato: 20,50Ct."
+        name: "Collana Tennis Riviera",
+        description: "Collana di diamanti stile Riviera, lunghezza 43,20 cm con 119 diamanti graduati taglio brillante rotondo incastonati a quattro griffe, montata in oro bianco 18K. La pietra centrale misura 2,00Ct e le due laterali 1,40Ct ciascuna. I diamanti hanno colore F/G e purezza VS-SI1. Peso totale 20,50Ct."
       }
     ]
   },
@@ -52,14 +54,16 @@ const translations = {
     privacyLink: "Privacy Policy",
     privacyText2: "and consent to the processing of personal data.",
     sendInquiry: "Send Request",
+    moreComingSoon: "More products coming soon",
+    moreDescription: "Our collection is constantly growing.<br/>Check back soon to discover new unique pieces of haute joaillerie.",
     products: [
       {
         name: "Tahitian Pearl Necklace",
-        description: "Elegant Tahitian pearl necklace with charcoal gray reflections, characterized by an intense and sophisticated luster. Classic and harmonious design perfect for any occasion. Made with 45 Tahitian pearls with a diameter of approximately 8/10 mm. Length of approximately 45 cm with an 18K white gold clasp."
+        description: "Elegant Tahitian pearl necklace featuring anthracite-grey overtones, distinguished by an intense and sophisticated luster. The necklace has a classic and harmonious design, making it perfect for any occasion, from everyday wear to the most exclusive events. The necklace is crafted with 45 Tahitian pearls measuring approximately 8/10 mm in diameter. It has a length of about 17.7 inches and is finished with an 18K white gold clasp."
       },
       {
-        name: "Diamond Riviera Necklace",
-        description: "Riviera-style diamond necklace, 43.20 cm in length with 119 graduated round brilliant-cut diamonds set in four-prong settings, mounted in 18K white gold. The center stone measures 2.00Ct and the two side stones are 1.40Ct each. The diamonds have F/G color and VS-SI1 clarity. Estimated total weight: 20.50Ct."
+        name: "Tennis Necklace Diamonds Riviera style ",
+        description: "Riviera-style diamond necklace, 43.20 cm in length with 119 graduated round brilliant-cut diamonds set in four-prong settings, mounted in 18K white gold. The center stone measures 2.00Ct and the two side stones are 1.40Ct each. The diamonds have F/G color and VS-SI1 clarity. Total weight 20.50Ct. approx."
       }
     ]
   }
@@ -233,6 +237,11 @@ export default function NecklacesPage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className={styles.comingSoonSection}>
+          <h3>{translations[language].moreComingSoon}</h3>
+          <p dangerouslySetInnerHTML={{ __html: translations[language].moreDescription }} />
         </div>
       </div>
 
