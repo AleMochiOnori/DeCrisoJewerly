@@ -7,10 +7,14 @@ interface CarouselProps {
   images: { src: string; alt: string }[];
 }
 
+
 export default function Carousel({ images }: CarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
+
+  const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
+  const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
 
   const goToPrevious = () => {
     if (isAnimating) return;
@@ -54,10 +58,29 @@ export default function Carousel({ images }: CarouselProps) {
   return (
     <div className={styles.carousel}>
       <div className={styles.imageContainer}>
-        <img
+        {/* Preload immagini adiacenti */}
+        {[prevIndex, nextIndex].map((idx) => (
+          <div
+            key={`preload-${idx}`}
+            aria-hidden="true"
+            style={{ position: 'absolute', inset: 0, opacity: 0, pointerEvents: 'none' }}
+          >
+            <Image
+              src={images[idx].src}
+              alt=""
+              fill
+              sizes="(max-width: 1200px) 100vw, 1200px"
+              style={{ objectFit: 'contain' }}
+            />
+          </div>
+        ))}
+        <Image
           key={currentIndex}
           src={images[currentIndex].src}
           alt={images[currentIndex].alt}
+          fill
+          sizes="(max-width: 1200px) 100vw, 1200px"
+          priority
           className={`${styles.image} ${
             isAnimating && direction
               ? direction === "left"
@@ -65,6 +88,7 @@ export default function Carousel({ images }: CarouselProps) {
                 : styles.slideOutRight
               : styles.slideIn
           }`}
+          style={{ objectFit: 'contain' }}
         />
         
         <button 
