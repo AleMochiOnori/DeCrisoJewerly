@@ -124,10 +124,6 @@ export default function BraceletsPage() {
     }));
   };
 
-  const getCurrentImage = (productId: number, images: string[]) => {
-    return images[currentImageIndex[productId] || 0];
-  };
-
   const handleInquire = (productName: string) => {
     setSelectedProduct(productName);
     setFormData({ ...formData, product: productName });
@@ -205,11 +201,23 @@ export default function BraceletsPage() {
             <div key={product.id} className={`${styles.productRow} ${index % 2 === 1 ? styles.reverse : ''}`}>
               <div className={styles.productImageWrapper}>
                 <div className={styles.imageGallery}>
-                  <img 
-                    src={getCurrentImage(product.id, product.images)} 
-                    alt={translations[language].products[index].name} 
-                    className={styles.productImage} 
-                  />
+                  {product.images.map((src, imgIndex) => (
+                    <img
+                      key={imgIndex}
+                      src={src}
+                      alt={translations[language].products[index].name}
+                      className={styles.productImage}
+                      loading={imgIndex === 0 ? "eager" : "lazy"}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        opacity: (currentImageIndex[product.id] || 0) === imgIndex ? 1 : 0,
+                        transition: 'opacity 0.3s ease',
+                        pointerEvents: (currentImageIndex[product.id] || 0) === imgIndex ? 'auto' : 'none',
+                      }}
+                    />
+                  ))}
                   {product.images.length > 1 && (
                     <>
                       <button 

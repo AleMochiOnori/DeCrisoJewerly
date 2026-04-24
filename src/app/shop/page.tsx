@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import styles from "./page.module.css";
 
 import ring1 from "../../../assets/Jewels/Ring/Bubble Ring/BubbleRing1.jpeg";
@@ -195,20 +195,6 @@ export default function ShopPage() {
     { id: 11, images: [newNecklace2a.src, newNecklace2b.src, newNecklace2c.src] },
   ];
 
-  // Preload all product images on mount to warm browser and CDN cache
-  const preloadedRef = useRef(false);
-  useEffect(() => {
-    if (preloadedRef.current) return;
-    preloadedRef.current = true;
-    products.forEach((product) => {
-      product.images.forEach((src) => {
-        const img = new window.Image();
-        img.src = src;
-      });
-    });
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-
   const nextImage = (productId: number, totalImages: number) => {    setCurrentImageIndex(prev => ({
       ...prev,
       [productId]: ((prev[productId] || 0) + 1) % totalImages
@@ -220,10 +206,6 @@ export default function ShopPage() {
       ...prev,
       [productId]: ((prev[productId] || 0) - 1 + totalImages) % totalImages
     }));
-  };
-
-  const getCurrentImage = (productId: number, images: string[]) => {
-    return images[currentImageIndex[productId] || 0];
   };
 
   const handleInquire = (productName: string) => {
@@ -303,11 +285,23 @@ export default function ShopPage() {
             <div key={product.id} className={`${styles.productRow} ${index % 2 === 1 ? styles.reverse : ''}`}>
               <div className={styles.productImageWrapper}>
                 <div className={styles.imageGallery}>
-                  <img 
-                    src={getCurrentImage(product.id, product.images)} 
-                    alt={translations[language].products[index].name} 
-                    className={styles.productImage} 
-                  />
+                  {product.images.map((src, imgIndex) => (
+                    <img
+                      key={imgIndex}
+                      src={src}
+                      alt={translations[language].products[index].name}
+                      className={styles.productImage}
+                      loading={imgIndex === 0 ? "eager" : "lazy"}
+                      style={{
+                        position: 'absolute',
+                        top: 0,
+                        left: 0,
+                        opacity: (currentImageIndex[product.id] || 0) === imgIndex ? 1 : 0,
+                        transition: 'opacity 0.3s ease',
+                        pointerEvents: (currentImageIndex[product.id] || 0) === imgIndex ? 'auto' : 'none',
+                      }}
+                    />
+                  ))}
                   {product.images.length > 1 && (
                     <>
                       <button 
