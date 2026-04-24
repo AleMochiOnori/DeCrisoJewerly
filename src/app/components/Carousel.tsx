@@ -1,5 +1,5 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import styles from "./Carousel.module.css";
 
@@ -15,28 +15,6 @@ export default function Carousel({ images }: CarouselProps) {
 
   const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
   const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-
-  // Preload a window of 5 images ahead and 2 behind
-  const preloadIndices = Array.from(new Set([
-    (currentIndex - 2 + images.length) % images.length,
-    (currentIndex - 1 + images.length) % images.length,
-    (currentIndex + 1) % images.length,
-    (currentIndex + 2) % images.length,
-    (currentIndex + 3) % images.length,
-    (currentIndex + 4) % images.length,
-    (currentIndex + 5) % images.length,
-  ])).filter(idx => idx !== currentIndex);
-
-  // On mount: preload ALL images via native Image() to warm the browser and CDN cache
-  const preloadedRef = useRef(false);
-  useEffect(() => {
-    if (preloadedRef.current) return;
-    preloadedRef.current = true;
-    images.forEach((image) => {
-      const img = new window.Image();
-      img.src = image.src;
-    });
-  }, [images]);
 
   const goToPrevious = () => {
     if (isAnimating) return;
@@ -80,23 +58,6 @@ export default function Carousel({ images }: CarouselProps) {
   return (
     <div className={styles.carousel}>
       <div className={styles.imageContainer}>
-        {/* Preload window: 5 avanti e 2 indietro */}
-        {preloadIndices.map((idx) => (
-          <div
-            key={`preload-${idx}`}
-            aria-hidden="true"
-            style={{ position: 'absolute', inset: 0, opacity: 0, pointerEvents: 'none' }}
-          >
-            <Image
-              src={images[idx].src}
-              alt=""
-              fill
-              priority
-              sizes="(max-width: 1200px) 100vw, 1200px"
-              style={{ objectFit: 'contain' }}
-            />
-          </div>
-        ))}
         <Image
           key={currentIndex}
           src={images[currentIndex].src}

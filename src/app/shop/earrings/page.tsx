@@ -248,7 +248,7 @@ export default function EarringsPage() {
                         opacity: (currentImageIndex[product.id] || 0) === imgIndex ? 1 : 0,
                         transition: 'opacity 0.3s ease',
                         pointerEvents: (currentImageIndex[product.id] || 0) === imgIndex ? 'auto' : 'none',
-                        objectPosition: product.id === 11 && imgIndex === 2 ? 'center 100%' : product.id === 4 && imgIndex === 2 ? '25% 20%' : 'center',
+                        objectPosition: product.id === 4 && imgIndex === 2 ? '25% 20%' : 'center',
                       }}
                     />
                   ))}
