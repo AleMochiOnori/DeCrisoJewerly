@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import styles from "./page.module.css";
 
 import ring1 from "../../../assets/Jewels/Ring/Bubble Ring/BubbleRing1.jpeg";
@@ -195,8 +195,21 @@ export default function ShopPage() {
     { id: 11, images: [newNecklace2a.src, newNecklace2b.src, newNecklace2c.src] },
   ];
 
-  const nextImage = (productId: number, totalImages: number) => {
-    setCurrentImageIndex(prev => ({
+  // Preload all product images on mount to warm browser and CDN cache
+  const preloadedRef = useRef(false);
+  useEffect(() => {
+    if (preloadedRef.current) return;
+    preloadedRef.current = true;
+    products.forEach((product) => {
+      product.images.forEach((src) => {
+        const img = new window.Image();
+        img.src = src;
+      });
+    });
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const nextImage = (productId: number, totalImages: number) => {    setCurrentImageIndex(prev => ({
       ...prev,
       [productId]: ((prev[productId] || 0) + 1) % totalImages
     }));
