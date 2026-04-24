@@ -17,7 +17,7 @@ export async function POST(request: Request) {
 
     // Invio email con Resend
     const { data, error } = await resend.emails.send({
-      from: 'De Criso Jewelry <onboarding@resend.dev>', // Cambia con il tuo dominio verificato
+      from: 'De Criso Jewelry <noreply@decriso.com>', // Dominio verificato su Resend
       to: ['info@decriso.com'], // Email dove ricevere le richieste
       replyTo: email, // Email del cliente per rispondere facilmente
       subject: `Nuovo messaggio da ${name}`,
