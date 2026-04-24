@@ -9,7 +9,7 @@ import bracelet1c from "../../../../assets/EMC Diamonds Tennis Bracelet/c.png";
 
 // RBC Diamonds Tennis Bracelet
 import bracelet2a from "../../../../assets/RBC Diamonds Tennis Bracelet/a.png";
-import bracelet2b from "../../../../assets/RBC Diamonds Tennis Bracelet/b.jpg";
+import bracelet2b from "../../../../assets/RBC Diamonds Tennis Bracelet/b_compressed.jpg";
 import bracelet2c from "../../../../assets/RBC Diamonds Tennis Bracelet/c.png";
 
 // Green EM EMC Bezel Set Bracelet 18KYG

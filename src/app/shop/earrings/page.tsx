@@ -24,12 +24,12 @@ import earrings4b from "../../../../assets/Orecchini Flower 2 - a Fiore con diam
 import earrings4c from "../../../../assets/Orecchini Flower 2 - a Fiore con diamanti/c.png";
 
 // A) Orecchini Flower 1 - a Fiore zaffiri Royal blue e diamanti
-import earrings5a from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/a.png";
-import earrings5b from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/b.png";
+import earrings5a from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/a_compressed.jpg";
+import earrings5b from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/b_compressed.jpg";
 import earrings5c from "../../../../assets/Orecchini Flower 1 - a Fiore  zaffiri Royal blue e diamanti/c.png";
 
 // 2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K
-import earrings6a from "../../../../assets/2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K - Blue/d.png";
+import earrings6a from "../../../../assets/2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K - Blue/d_compressed.jpg";
 import earrings6b from "../../../../assets/2 parte Orecchini con Zaffiri Blu e Diamanti in Oro Bianco 18K - Blue/e.png";
 
 const translations = {
@@ -248,6 +248,7 @@ export default function EarringsPage() {
                         opacity: (currentImageIndex[product.id] || 0) === imgIndex ? 1 : 0,
                         transition: 'opacity 0.3s ease',
                         pointerEvents: (currentImageIndex[product.id] || 0) === imgIndex ? 'auto' : 'none',
+                        objectPosition: product.id === 11 && imgIndex === 2 ? 'center 100%' : product.id === 4 && imgIndex === 2 ? '25% 20%' : 'center',
                       }}
                     />
                   ))}
