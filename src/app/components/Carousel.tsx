@@ -69,6 +69,7 @@ export default function Carousel({ images }: CarouselProps) {
               src={images[idx].src}
               alt=""
               fill
+              priority
               sizes="(max-width: 1200px) 100vw, 1200px"
               style={{ objectFit: 'contain' }}
             />
