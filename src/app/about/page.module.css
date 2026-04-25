@@ -37,7 +37,7 @@
 
 .languageToggle {
   position: fixed;
-  top: 2rem;
+  top: 1rem;
   right: 2rem;
   background: #2c2416;
   color: #f5f0e8;
@@ -105,7 +105,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
- 
 }
 
 .ringImage {
@@ -115,10 +114,26 @@
 }
 
 @media (max-width: 768px) {
+  .page {
+    padding-top: 5rem;
+  }
+
+  .languageToggle {
+    top: 0.75rem;
+    right: 0.1rem;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+  }
+
   .section {
     flex-direction: column;
   }
-  
+
+  .page::before,
+  .page::after {
+    display: none;
+  }
+
   .imageWrapper {
     flex: 0 0 200px;
   }

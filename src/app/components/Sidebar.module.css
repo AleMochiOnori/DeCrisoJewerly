@@ -198,3 +198,15 @@
   background: rgba(11, 31, 58, 0.2);
   color: #0B1F3A;
 }
+
+@media (max-width: 768px) {
+  .hamburger {
+    padding: 0.65rem;
+    gap: 3px;
+  }
+
+  .bar {
+    width: 22px;
+    height: 3px;
+  }
+}

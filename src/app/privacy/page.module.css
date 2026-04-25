@@ -39,7 +39,7 @@
 
 .languageToggle {
   position: fixed;
-  top: 2rem;
+  top: 1rem;
   right: 2rem;
   background: #2c2416;
   color: #f5f0e8;
@@ -187,7 +187,7 @@
 @media (max-width: 768px) {
   .page {
     width: 90%;
-    padding: 2rem 1rem 3rem;
+    padding: 5rem 1rem 3rem;
   }
 
   .page::before,
@@ -231,9 +231,9 @@
   }
 
   .languageToggle {
-    top: 1rem;
-    right: 1rem;
-    padding: 0.6rem 1.2rem;
+    top: 0.75rem;
+    right: 0.1rem;
+    padding: 0.5rem 1rem;
     font-size: 0.9rem;
   }
 }
