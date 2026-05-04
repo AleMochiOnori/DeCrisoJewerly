@@ -104,17 +104,7 @@ export default function ContactPage() {
       <h1 className={styles.title}>{translations[language].title}</h1>
       <div className={styles.contactInfo}>
         <div className={styles.infoCard}>
-          <h3>📧 Email</h3>
-          <p>info@decriso.com</p>
-        </div>
-        <div className={styles.infoCard}>
-          <h3>📱 {translations[language].phone}</h3>
-          <p>+39 06 1234567</p>
-        </div>
-        <div className={styles.infoCard}>
-          <h3>📍 {translations[language].address}</h3>
-          <p>Via Marcello Prestinari 15</p>
-          <p>00195 Roma - IIJ Srl</p>
+          <p>Request private consultation</p>
         </div>
       </div>
 

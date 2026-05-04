@@ -3,11 +3,38 @@ import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import styles from "./Sidebar.module.css";
+import { useLanguage } from "../context/LanguageContext";
+
+const translations = {
+  it: {
+    home: "Home",
+    about: "Chi Siamo",
+    jewelry: "Gioielli",
+    shop: "Shop",
+    bracelets: "Bracciali",
+    earrings: "Orecchini",
+    necklaces: "Collane",
+    rings: "Anelli",
+    contact: "Contattaci"
+  },
+  en: {
+    home: "Home",
+    about: "About Us",
+    jewelry: "Jewelry",
+    shop: "Shop",
+    bracelets: "Bracelets",
+    earrings: "Earrings",
+    necklaces: "Necklaces",
+    rings: "Rings",
+    contact: "Contact Us"
+  }
+};
 
 export default function Sidebar() {
   const [isOpen, setIsOpen] = useState(false);
   const [isShopOpen, setIsShopOpen] = useState(false);
   const pathname = usePathname();
+  const { language, toggleLanguage } = useLanguage();
 
   // Definisci gli stili per ogni pagina
   const getNavStyle = () => {
@@ -50,38 +77,44 @@ export default function Sidebar() {
         className={`${styles.nav} ${getNavStyle()} ${isOpen ? styles.open : ''}`} 
         aria-label="Main navigation"
       >
+        <div className={styles.languageToggleContainer}>
+          <button className={styles.languageToggle} onClick={toggleLanguage}>
+            {language === "it" ? "EN" : "IT"}
+          </button>
+        </div>
+        
         <ul className={styles.list}>
-          <li><Link href="/" onClick={() => setIsOpen(false)}>Home</Link></li>
-          <li><Link href="/about" onClick={() => setIsOpen(false)}>About Us</Link></li>
-          <li><Link href="/portfolio" onClick={() => setIsOpen(false)}>Jewelry</Link></li>
+          <li><Link href="/" onClick={() => setIsOpen(false)}>{translations[language].home}</Link></li>
+          <li><Link href="/about" onClick={() => setIsOpen(false)}>{translations[language].about}</Link></li>
+          <li><Link href="/portfolio" onClick={() => setIsOpen(false)}>{translations[language].jewelry}</Link></li>
           
           <li className={styles.shopMenuItem}>
             <div 
               className={styles.shopToggle} 
               onClick={() => setIsShopOpen(!isShopOpen)}
             >
-              Shop
+              {translations[language].shop}
               <span className={`${styles.arrow} ${isShopOpen ? styles.arrowOpen : ''}`}>▼</span>
             </div>
             {isShopOpen && (
               <ul className={styles.subMenu}>
                 <li>
-                  <Link href="/shop/bracelets" onClick={() => setIsOpen(false)}>Bracelets</Link>
+                  <Link href="/shop/bracelets" onClick={() => setIsOpen(false)}>{translations[language].bracelets}</Link>
                 </li>
                 <li>
-                  <Link href="/shop/earrings" onClick={() => setIsOpen(false)}>Earrings</Link>
+                  <Link href="/shop/earrings" onClick={() => setIsOpen(false)}>{translations[language].earrings}</Link>
                 </li>
                 <li>
-                  <Link href="/shop/necklaces" onClick={() => setIsOpen(false)}>Necklaces</Link>
+                  <Link href="/shop/necklaces" onClick={() => setIsOpen(false)}>{translations[language].necklaces}</Link>
                 </li>
                 <li>
-                  <Link href="/shop/rings" onClick={() => setIsOpen(false)}>Rings</Link>
+                  <Link href="/shop/rings" onClick={() => setIsOpen(false)}>{translations[language].rings}</Link>
                 </li>
               </ul>
             )}
           </li>
           
-          <li><Link href="/contact" onClick={() => setIsOpen(false)}>Contact Us</Link></li>
+          <li><Link href="/contact" onClick={() => setIsOpen(false)}>{translations[language].contact}</Link></li>
         </ul>
       </nav>
       

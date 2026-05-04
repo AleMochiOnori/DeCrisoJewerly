@@ -13,9 +13,7 @@ export default function Carousel({ images }: CarouselProps) {
   const [direction, setDirection] = useState<"left" | "right" | null>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
-  const prevIndex = currentIndex === 0 ? images.length - 1 : currentIndex - 1;
-  const nextIndex = currentIndex === images.length - 1 ? 0 : currentIndex + 1;
-
+  
   const goToPrevious = () => {
     if (isAnimating) return;
     setDirection("right");

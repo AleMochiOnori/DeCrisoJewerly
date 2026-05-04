@@ -16,14 +16,10 @@ export default function Footer() {
         </div>
 
         <div className={styles.centerContent}>
-          <div style={{ marginTop: "1.5rem" }}>
+          <div style={{ marginTop: "2.7rem" }}>
             <p>📧 info@decriso.com</p>
-            <p>📱 +39 06 1234567</p>
             <p>IIJ Srl</p>
             <p>P.IVA - VAT No. 17843811005</p>
-            <p className={styles.via}>
-              Via Marcello Prestinari 15 - 00195 - Roma - ITALIA{" "}
-            </p>
           </div>
         </div>
 
@@ -78,7 +74,7 @@ export default function Footer() {
             </div>
             <div className={styles.link}>
               <svg
-                className={styles.svg}
+                className={styles.svgYoutube}
                 xmlns="http://www.w3.org/2000/svg"
                 xmlnsXlink="http://www.w3.org/1999/xlink"
                 width="800px"
